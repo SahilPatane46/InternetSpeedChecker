@@ -3,71 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Internet Speed Test</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    h1 {
-      color: #333;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      margin-top: 20px;
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 20px;
-      color: #333;
-    }
-  </style>
 </head>
 <body>
   <h1>Internet Speed Test</h1>
   <button onclick="checkSpeed()">Check Speed</button>
   <div id="result">Speed will appear here...</div>
-
-<script>
-  function checkSpeed() {
-    const startTime = new Date().getTime();
-    const fileSizeInBytes = 5242880; // 5MB
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("GET", "https://speed.hetzner.de/5MB.bin?cacheBuster=" + Math.random(), true);
-    xhr.responseType = "blob";
-
-    xhr.onload = function () {
-      const endTime = new Date().getTime();
-      const duration = (endTime - startTime) / 1000; // seconds
-      const bitsLoaded = fileSizeInBytes * 8;
-      const speedBps = bitsLoaded / duration;
-      const speedMbps = (speedBps / 1024 / 1024).toFixed(2);
-
-      document.getElementById("result").innerText = `Download Speed: ${speedMbps} Mbps`;
-    };
-
-    xhr.onerror = function () {
-      document.getElementById("result").innerText = "Error loading test file. Please try again.";
-    };
-
-    document.getElementById("result").innerText = "Testing... Please wait...";
-    xhr.send();
-  }
-</script>
-
-
+<scrip src="script.js"></script>
 </body>
 </html>
